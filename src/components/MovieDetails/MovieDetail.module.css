@@ -1,11 +1,11 @@
 .sectionDetail {
-  height: 100vh;
+  height: 100vh;  
   background-size: cover;
-  background-position: center;
+  background-position: center center  ;
   color: white;
 }
 .sectionDetail h1 {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 .description {
   max-width: 35%;
@@ -16,6 +16,9 @@
     rgba(29, 29, 29, 0.6) 0%,
     rgba(29, 29, 29, 0.8) 60%
   );
+}
+.poster{
+  display: none;
 }
 p {
   margin: 0;
@@ -44,11 +47,12 @@ p {
 .sinopse {
   letter-spacing: 1px;
 }
-
-@media (max-width: 1265px) {
+@media (max-width: 1300px) {
   .sectionDetail h1 {
     font-size: 3.5rem;
   }
+}
+@media (max-width: 1265px) {
   .icons {
     width: 20px;
   }
@@ -58,17 +62,13 @@ p {
 }
 
 @media (max-width: 1150px) {
-  .description{
+  .description {
     width: 500px;
-    
   }
-  .description div{
-    margin-bottom: 5px;
+  .sectionDetail h1 {
+    font-size: 2.8rem;
   }
-  .description div{
-    width: 20px;
-  }
-  .description span{
+  .description span {
     display: none;
   }
   .icons {
@@ -77,4 +77,12 @@ p {
   .star {
     width: 20px;
   }
+}
+@media (max-width: 870px) {
+  .description{
+    max-width: 50%;
+  }
+}
+@media (max-width: 600px) {
+
 }

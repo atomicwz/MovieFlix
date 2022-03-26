@@ -22,11 +22,13 @@ export const Movies = () => {
 
   React.useEffect(() => {
     const fetch = async () => {
+      setLoading(false)
       const data = await getMovies(page);
       setMovies(data);
     };
     fetch();
   }, [page]);
+  
   function nextPage() {
     if (page === 6) return;
     setPage(page + 1);
@@ -38,10 +40,10 @@ export const Movies = () => {
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const eventValue = event.currentTarget.value;
-    
+    setLoading(true)
     setSearch(eventValue);
     setTimeout(() => {
-      if (eventValue === "") return;
+      if (eventValue === "") return setLoading(false);
       filterMovies(eventValue);
     }, timeToSearch);
   }
@@ -49,17 +51,18 @@ export const Movies = () => {
   async function filterMovies(search: any) {
     const filtereds = await getMoviesSearcheds(search);
     setFilteredMovies(filtereds.results);
+    setLoading(false)
   }
-
+  
   return (
     <section className="container-section">
-      <Header filter={handleChange}/>
+      <Header loading={loading}filter={handleChange}/>
       { search ? (
-        <MovieFiltered loading={loading} filteredMovies={filteredMovies} />
+        <MovieFiltered filteredMovies={filteredMovies} />
       ) : (
         <>
           <MovieList movies={movies} />
-          <ButtonPagination next={nextPage} previous={previousrPage} page={page}/>
+          <ButtonPagination  next={nextPage} previous={previousrPage} page={page}/>
         </>
       )}
     </section>

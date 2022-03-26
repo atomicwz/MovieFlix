@@ -14,10 +14,24 @@ input:hover{
     border: none;
     background-color:rgba(15, 15, 15, 1);
 }
-
+@media (max-width:1000px){
+    input{
+        width: 35%;
+    }
+}
 @media (max-width:900px){
     input{
         width: 50%;
+    }
+}
+@media (max-width:750px){
+    input{
+        width: 30%;
+    }
+}
+@media (max-width:650px){
+    input{
+        width: 90%;
     }
 }
 @media (max-width:450px){

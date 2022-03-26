@@ -10,7 +10,7 @@ export const MovieFiltered = ({ filteredMovies }: any) => {
           <Link to={`/movie/${movie.id}`}>
             <li key={key}>
               <img
-                src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}
                 alt="Filme"
               />
             </li>
@@ -19,4 +19,4 @@ export const MovieFiltered = ({ filteredMovies }: any) => {
       })}
     </ul>
   );
-};
+};  
