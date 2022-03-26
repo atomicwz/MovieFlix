@@ -1,0 +1,80 @@
+.sectionDetail {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+.sectionDetail h1 {
+  font-size: 5rem;
+}
+.description {
+  max-width: 35%;
+  padding: 50px;
+  height: inherit;
+  background: linear-gradient(
+    270deg,
+    rgba(29, 29, 29, 0.6) 0%,
+    rgba(29, 29, 29, 0.8) 60%
+  );
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.description div {
+  font-weight: 400;
+  display: flex;
+  gap: 1.2rem;
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  margin-top: 10px;
+  color: rgb(153, 153, 153);
+}
+.star {
+  color: rgb(139, 139, 90);
+  width: 20px;
+}
+.icons {
+  width: 17px;
+  display: inline-block;
+  padding: 0;
+}
+.sinopse {
+  letter-spacing: 1px;
+}
+
+@media (max-width: 1265px) {
+  .sectionDetail h1 {
+    font-size: 3.5rem;
+  }
+  .icons {
+    width: 20px;
+  }
+  .star {
+    width: 20px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .description{
+    width: 500px;
+    
+  }
+  .description div{
+    margin-bottom: 5px;
+  }
+  .description div{
+    width: 20px;
+  }
+  .description span{
+    display: none;
+  }
+  .icons {
+    width: 20px;
+  }
+  .star {
+    width: 20px;
+  }
+}

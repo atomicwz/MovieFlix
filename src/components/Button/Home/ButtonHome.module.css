@@ -1,0 +1,19 @@
+.buttonHome{
+    position: absolute;
+    bottom: 15rem;
+    left: 3%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(3, 3, 3, 0.63);
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+    font-weight: 700;
+    font-family: var(--font-family);
+}
+.buttonHome:hover,
+.buttonHome:focus{
+    background: rgba(54, 54, 54, 0.63);
+}
+    

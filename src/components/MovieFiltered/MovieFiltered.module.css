@@ -1,0 +1,16 @@
+.movie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    background: rgb(20, 20, 20);
+    padding: 30px 0 10px 0;
+    overflow-y: hidden;
+    gap: 1.5rem;
+    margin: 20px 0;
+  }
+  
+  .movie li:hover {
+    transform: scale(1.06);
+    transition: 0.3s;
+  }
