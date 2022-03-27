@@ -24,7 +24,7 @@ export const MovieDetail = () => {
     }
     renderMovie();
   }, []);
-  
+
   return (
     <>
       <section
@@ -41,20 +41,20 @@ export const MovieDetail = () => {
           />
 
           <h1>{movie.title}</h1>
-          <div>
-            <div>
+          <div className={styled.containerDescript}>
+            <div className={styled.divIcons}>
               <Star className={styled.icons} />
               <p className={styled.votes}>{movie.vote_average}</p>{" "}
               <span>|</span>
             </div>
 
-            <div>
+            <div className={styled.divIcons}>
               <Clock className={styled.icons} />
               <p>{movie.runtime} Min</p>
               <span>|</span>
             </div>
 
-            <div>
+            <div className={styled.divIcons}>
               <Calendar className={styled.icons} />
               <p>{movie.release_date}</p>
             </div>

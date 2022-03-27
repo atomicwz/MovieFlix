@@ -17,3 +17,8 @@
     background: rgba(54, 54, 54, 0.63);
 }
     
+@media (max-width:600px){
+    .buttonHome{
+        bottom: 2rem;
+    }
+}

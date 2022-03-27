@@ -1,7 +1,7 @@
 .sectionDetail {
-  height: 100vh;  
+  height: 100vh;
   background-size: cover;
-  background-position: center center  ;
+  background-position: center center;
   color: white;
 }
 .sectionDetail h1 {
@@ -17,7 +17,7 @@
     rgba(29, 29, 29, 0.8) 60%
   );
 }
-.poster{
+.poster {
   display: none;
 }
 p {
@@ -79,10 +79,34 @@ p {
   }
 }
 @media (max-width: 870px) {
-  .description{
+  .description {
     max-width: 50%;
+    padding: 10px;
   }
 }
 @media (max-width: 600px) {
-
+  .description div {
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .sectionDetail h1 {
+    font-size: 2.3rem;
+  }
+  .containerDescript {
+    display: flex;
+    flex-direction: column;
+  }
+  .divIcons {
+    display: inline;
+    height: 1px;
+  }
+}
+@media (max-width: 870px) {
+  .sectionDetail h1 {
+    margin-bottom: 3rem;
+  }
+  .description {
+    max-width: 100%;
+  }
 }
