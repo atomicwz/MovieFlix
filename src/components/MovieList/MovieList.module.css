@@ -1,6 +1,7 @@
 .lista{
   margin: 0 auto;
   font-family: var(--font-primary);
+  overflow-x: hidden;
 }
 
 .movie {

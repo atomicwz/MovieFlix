@@ -6,6 +6,7 @@
     background: rgb(20, 20, 20);
     padding: 30px 0 10px 0;
     overflow-y: hidden;
+    overflow-x: hidden;
     gap: 1.5rem;
     margin: 20px 0;
   }
