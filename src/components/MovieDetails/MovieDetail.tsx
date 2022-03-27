@@ -8,9 +8,13 @@ import { ReactComponent as Clock } from "../../Assets/clock.svg";
 import { ReactComponent as Calendar } from "../../Assets/calendar.svg";
 
 interface IMovieDetail {
-  original_title: string;
+  title: string;
   overview: string;
   poster_path: string;
+  backdrop_path: string;
+  genres: object;
+  description: string;
+  vote_average: number;
 }
 
 export const MovieDetail = () => {
@@ -24,7 +28,6 @@ export const MovieDetail = () => {
     }
     renderMovie();
   }, []);
-
   return (
     <>
       <section
@@ -34,13 +37,30 @@ export const MovieDetail = () => {
         }}
       >
         <div className={styled.description}>
-          <img
-            className={styled.poster}
-            src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-            alt="Filme"
-          />
+
+          {movie.poster_path && (
+            <img
+              className={styled.poster}
+              src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+              alt="Filme"
+            />
+          )}
 
           <h1>{movie.title}</h1>
+          <div>
+            <ul className={styled.genres}>
+              {movie.genres
+                ? movie.genres.map((item: any) => {
+                    return (
+                      <>
+                        <li>{item.name}</li>
+                        <span>|</span>
+                      </>
+                    );
+                  })
+                : "Gênero não encontrado."}
+            </ul>
+          </div>
           <div className={styled.containerDescript}>
             <div className={styled.divIcons}>
               <Star className={styled.icons} />

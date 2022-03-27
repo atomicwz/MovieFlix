@@ -19,6 +19,11 @@
     rgba(29, 29, 29, 0.8) 60%
   );
 }
+.genres{
+  display: flex;
+  gap: 10px;
+  flex-flow: row wrap;
+}
 .poster {
   display: none;
 }
@@ -26,14 +31,13 @@ p {
   margin: 0;
   padding: 0;
 }
-
 .description div {
   font-weight: 400;
   display: flex;
-  gap: 1.2rem;
+  gap: 0.5rem;
   width: 100%;
   align-items: flex-start;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem ;
   margin-top: 10px;
   color: rgb(153, 153, 153);
 }
@@ -101,7 +105,6 @@ p {
   }
   .divIcons {
     display: inline;
-    height: 1px;
   }
 }
 @media (max-width: 870px) {
@@ -110,5 +113,6 @@ p {
   }
   .description {
     max-width: 100%;
+    padding: 0 20px;
   }
 }
