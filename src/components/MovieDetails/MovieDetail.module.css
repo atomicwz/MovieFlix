@@ -4,6 +4,7 @@
   background-position: center center;
   color: white;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .sectionDetail h1 {
   font-size: 4rem;
