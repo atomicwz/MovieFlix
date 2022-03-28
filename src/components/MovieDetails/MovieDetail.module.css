@@ -3,8 +3,7 @@
   background-size: cover;
   background-position: center center;
   color: white;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
   cursor: default;
 }
 .sectionDetail h1 {
@@ -12,6 +11,7 @@
   cursor: pointer;
 }
 .description {
+  overflow: hidden;
   max-width: 35%;
   padding: 50px;
   height: inherit;
@@ -21,25 +21,25 @@
     rgba(29, 29, 29, 0.8) 60%
   );
 }
-.genres{
+.genres {
   display: flex;
   gap: 10px;
   flex-flow: row wrap;
 }
-.genres li{
+.genres li {
   padding-right: 1rem;
   padding-bottom: 1.3rem;
   height: 1rem;
-  display: flex ;
+  display: flex;
   align-items: flex-start;
   color: rgb(153, 153, 153);
-  transition: .3s;
+  transition: 0.3s;
 }
-.genres li:hover{
+.genres li:hover {
   color: white;
   transform: scale(1.05);
 }
-.genres li:not(:last-child){
+.genres li:not(:last-child) {
   border-right: 1px solid rgb(153, 153, 153);
 }
 .poster {
@@ -50,22 +50,22 @@ p {
   padding: 0;
 }
 .description div {
+  overflow: hidden;
   font-weight: 400;
   display: flex;
   gap: 0.5rem;
   width: 100%;
   align-items: flex-start;
-  margin-bottom: 2rem ;
+  margin-bottom: 2rem;
   margin-top: 10px;
-
 }
-.containerDescript{
-  color:rgb(190, 190, 190) ;
+.containerDescript {
+  color: rgb(190, 190, 190);
 }
-.divIcons{
-  transition: .3s;
+.divIcons {
+  transition: 0.3s;
 }
-.divIcons:hover{
+.divIcons:hover {
   color: white;
   transform: scale(1.05);
 }

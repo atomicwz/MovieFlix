@@ -12,8 +12,29 @@ header h1 {
   font-family: var(--font-weight-title);
   font-size: 2rem;
   cursor: default;
+  position: relative;
+  
+}
+header h1:hover:after{
+  content: '';
+  display: block;
+  width:6rem;
+  height: 3px;
+  background-color: red; 
+  position: absolute;
+  bottom: -5px;
+  left: 2px;
+  animation: titleAnimation .2s ease-in;
 }
 
+@keyframes titleAnimation {
+    0%{
+      width: 0rem;
+    }
+    100%{
+      width: 6rem;
+    }
+}
 header p {
   color: white;
   cursor: pointer;

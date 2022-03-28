@@ -46,6 +46,7 @@ export const Movies = () => {
     const eventValue = event.currentTarget.value;
     setLoading(true)
     setSearch(eventValue);
+
     setTimeout(() => {
       if (eventValue === "") return setLoading(false);
       filterMovies(eventValue);
