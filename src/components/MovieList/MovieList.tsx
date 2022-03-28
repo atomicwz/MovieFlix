@@ -12,9 +12,9 @@ export const MovieList = (props: IMovieList) => {
   return (
     <div className="lista">
       <ul className={styled.movie}>
-        {props.movies.map((movie: any, key: any) => {
+        {props.movies.map((movie: IMovieProps) => {
           return (
-            <Link key={key} to={`/movie/${movie.id}`}>
+            <Link key={movie.id} to={`/movie/${movie.id}`}>
               <li>
                 <img
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

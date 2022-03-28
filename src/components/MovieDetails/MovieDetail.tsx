@@ -1,4 +1,4 @@
-import * as React from "react";
+import  React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import { getMovieDetails } from "../../services/api";
 import { ButtonHome } from "../Button/Home/ButtonHome";
@@ -12,22 +12,40 @@ interface IMovieDetail {
   overview: string;
   poster_path: string;
   backdrop_path: string;
-  genres: object;
-  description: string;
+  runtime: number;
+  genres: Array<IGenre>;
   vote_average: number;
+  release_date: string;
+}
+
+interface IGenre{
+  name: string;
+  id: number;
 }
 
 export const MovieDetail = () => {
-  const [movie, setMovie] = React.useState<any>({});
+  const [movie, setMovie] = useState<IMovieDetail>({
+    title: '',
+    overview: '',
+    poster_path: '',
+    backdrop_path:'',
+    runtime: 0,
+    genres: [],
+    vote_average: 0,
+    release_date: '',
+  });
+
   const { id } = useParams();
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function renderMovie() {
       const response = await getMovieDetails(id!);
+      console.log(response)
       setMovie(response);
     }
     renderMovie();
   }, []);
+
   return (
     <>
       <section
@@ -37,7 +55,6 @@ export const MovieDetail = () => {
         }}
       >
         <div className={styled.description}>
-
           {movie.poster_path && (
             <img
               className={styled.poster}
@@ -50,7 +67,7 @@ export const MovieDetail = () => {
           <div>
             <ul className={styled.genres}>
               {movie.genres
-                ? movie.genres.map((item: any) => {
+                ? movie.genres.map((item: IGenre) => {
                     return (
                       <>
                         <li>{item.name}</li>

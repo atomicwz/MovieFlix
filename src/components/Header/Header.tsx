@@ -1,9 +1,15 @@
 import React from "react";
-import { Input } from "../Input/Input";
+import { IInput, Input } from "../Input/Input";
 import { Loading } from "../Loading/Loading";
 import "./Header.module.css";
 
-export const Header = (props: any) => {
+interface IHeader{
+  loading: boolean
+  filter: React.ChangeEventHandler<HTMLInputElement>
+}
+
+
+export const Header = (props: IHeader) => {
   return (
     <header>
       {props.loading && <Loading/>}

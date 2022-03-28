@@ -1,7 +1,7 @@
 import React from "react";
 import './Input.module.css'
 
-interface IInput{
+export interface IInput{
   onChange: React.ChangeEventHandler<HTMLInputElement>
 }
 export const Input = (props:IInput) => {

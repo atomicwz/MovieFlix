@@ -11,6 +11,10 @@ export interface IMovieProps{
   id: number
 }
 
+export interface IFilteredMovie{
+  poster_path: string
+  id: number
+}
 
 export const Movies = () => {
   const timeToSearch = 2000;
@@ -18,7 +22,7 @@ export const Movies = () => {
   const [movies, setMovies] = React.useState<IMovieProps[]>([]);
   const [search, setSearch] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [filteredMovies, setFilteredMovies] = React.useState<any>([]);
+  const [filteredMovies, setFilteredMovies] = React.useState<IFilteredMovie[]>([]);
 
   React.useEffect(() => {
     const fetch = async () => {
@@ -48,7 +52,7 @@ export const Movies = () => {
     }, timeToSearch);
   }
 
-  async function filterMovies(search: any) {
+  async function filterMovies(search: string) {
     const filtereds = await getMoviesSearcheds(search);
     setFilteredMovies(filtereds.results);
     setLoading(false)
@@ -56,7 +60,7 @@ export const Movies = () => {
   
   return (
     <section className="container-section">
-      <Header loading={loading}filter={handleChange}/>
+      <Header loading={loading} filter={handleChange}/>
       { search ? (
         <MovieFiltered filteredMovies={filteredMovies} />
       ) : (
