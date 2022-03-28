@@ -15,6 +15,7 @@
 .buttonHome:hover,
 .buttonHome:focus{
     background: rgba(54, 54, 54, 0.63);
+    border: 1px solid white;
 }
     
 @media (max-width:600px){

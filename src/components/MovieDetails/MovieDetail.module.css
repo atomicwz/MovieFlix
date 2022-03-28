@@ -5,9 +5,11 @@
   color: white;
   overflow-x: hidden;
   overflow-y: hidden;
+  cursor: default;
 }
 .sectionDetail h1 {
   font-size: 4rem;
+  cursor: pointer;
 }
 .description {
   max-width: 35%;
@@ -24,6 +26,22 @@
   gap: 10px;
   flex-flow: row wrap;
 }
+.genres li{
+  padding-right: 1rem;
+  padding-bottom: 1.3rem;
+  height: 1rem;
+  display: flex ;
+  align-items: flex-start;
+  color: rgb(153, 153, 153);
+  transition: .3s;
+}
+.genres li:hover{
+  color: white;
+  transform: scale(1.05);
+}
+.genres li:not(:last-child){
+  border-right: 1px solid rgb(153, 153, 153);
+}
 .poster {
   display: none;
 }
@@ -39,11 +57,17 @@ p {
   align-items: flex-start;
   margin-bottom: 2rem ;
   margin-top: 10px;
-  color: rgb(153, 153, 153);
+
 }
-.star {
-  color: rgb(139, 139, 90);
-  width: 20px;
+.containerDescript{
+  color:rgb(190, 190, 190) ;
+}
+.divIcons{
+  transition: .3s;
+}
+.divIcons:hover{
+  color: white;
+  transform: scale(1.05);
 }
 .icons {
   width: 17px;

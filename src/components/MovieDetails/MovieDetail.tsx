@@ -1,4 +1,4 @@
-import  React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieDetails } from "../../services/api";
 import { ButtonHome } from "../Button/Home/ButtonHome";
@@ -18,21 +18,21 @@ interface IMovieDetail {
   release_date: string;
 }
 
-interface IGenre{
+interface IGenre {
   name: string;
   id: number;
 }
 
 export const MovieDetail = () => {
   const [movie, setMovie] = useState<IMovieDetail>({
-    title: '',
-    overview: '',
-    poster_path: '',
-    backdrop_path:'',
+    title: "",
+    overview: "",
+    poster_path: "",
+    backdrop_path: "",
     runtime: 0,
     genres: [],
     vote_average: 0,
-    release_date: '',
+    release_date: "",
   });
 
   const { id } = useParams();
@@ -40,7 +40,6 @@ export const MovieDetail = () => {
   useEffect(() => {
     async function renderMovie() {
       const response = await getMovieDetails(id!);
-      console.log(response)
       setMovie(response);
     }
     renderMovie();
@@ -69,10 +68,10 @@ export const MovieDetail = () => {
               {movie.genres
                 ? movie.genres.map((item: IGenre) => {
                     return (
-                      <>
-                        <li>{item.name}</li>
-                        <span>|</span>
-                      </>
+
+                      <li key={item.id}>
+                        {item.name}
+                      </li>
                     );
                   })
                 : "Gênero não encontrado."}
@@ -82,13 +81,11 @@ export const MovieDetail = () => {
             <div className={styled.divIcons}>
               <Star className={styled.icons} />
               <p className={styled.votes}>{movie.vote_average}</p>{" "}
-              <span>|</span>
             </div>
 
             <div className={styled.divIcons}>
               <Clock className={styled.icons} />
               <p>{movie.runtime} Min</p>
-              <span>|</span>
             </div>
 
             <div className={styled.divIcons}>
