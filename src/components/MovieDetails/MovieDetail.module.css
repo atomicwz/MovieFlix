@@ -1,19 +1,19 @@
 .sectionDetail {
-  height: 100vh;
   background-size: cover;
   background-position: center center;
   color: white;
   cursor: default;
-  overflow-x: hidden;
 }
 .sectionDetail h1 {
   font-size: 4rem;
   cursor: pointer;
 }
 .description {
+  overflow-x: hidden;
+  overflow-y: hidden;
   max-width: 40%;
   padding: 0 40px;
-  height: inherit;
+  height: 100vh;
   background: linear-gradient(
     270deg,
     rgba(29, 29, 29, 0.6) 0%,
@@ -24,6 +24,8 @@
   display: flex;
   gap: 10px;
   flex-flow: row wrap;
+  margin: 1rem 0;
+
 }
 .genres li {
   padding-right: 1rem;
@@ -48,19 +50,22 @@ p {
   margin: 0;
   padding: 0;
 }
-.description div {
+.description{
   font-weight: 400;
-  display: flex;
-  gap: 0.5rem;
-  width: 100%;
+  
   align-items: flex-start;
 }
 .containerDescript {
   color: rgb(190, 190, 190);
+  display: flex;
+  width: 100%;
 }
 .divIcons {
+  display: flex;
+  gap: 0.5rem;
   transition: 0.3s;
   z-index: 100;
+  width: 100%;
 }
 .divIcons:hover {
   color: white;
@@ -108,22 +113,17 @@ p {
     max-width: 50%;
     padding: 0 10px;
   }
+  .genres{
+    margin: 1rem 0;
+  }
 }
 @media (max-width: 600px) {
-  .description div {
-    gap: 10px;
-    align-items: center;
-  }
   .sectionDetail h1 {
     font-size: 2.5rem;
   }
   .containerDescript {
     display: flex;
-    flex-direction: column;
-  }
-  .divIcons {
-    margin-top: 1rem;
-    display: inline;
+    flex-direction: row;
   }
 }
 @media (max-width: 870px) {
