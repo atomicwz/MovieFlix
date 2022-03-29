@@ -54,8 +54,6 @@ p {
   gap: 0.5rem;
   width: 100%;
   align-items: flex-start;
-  margin-bottom: 2rem;
-  margin-top: 10px;
 }
 .containerDescript {
   color: rgb(190, 190, 190);
@@ -75,6 +73,7 @@ p {
 }
 .sinopse {
   letter-spacing: 1px;
+  margin-top: 3rem;
 }
 @media (max-width: 1300px) {
   .sectionDetail h1 {
@@ -83,9 +82,6 @@ p {
 }
 @media (max-width: 1265px) {
   .icons {
-    width: 20px;
-  }
-  .star {
     width: 20px;
   }
 }
@@ -110,14 +106,13 @@ p {
 @media (max-width: 870px) {
   .description {
     max-width: 50%;
-    padding: 10px;
+    padding: 0 10px;
   }
 }
 @media (max-width: 600px) {
   .description div {
     gap: 10px;
     align-items: center;
-    margin-bottom: 1rem;
   }
   .sectionDetail h1 {
     font-size: 2.5rem;
@@ -127,6 +122,7 @@ p {
     flex-direction: column;
   }
   .divIcons {
+    margin-top: 1rem;
     display: inline;
   }
 }
@@ -139,6 +135,6 @@ p {
     padding: 0 20px;
   }
   .sinopse{
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
