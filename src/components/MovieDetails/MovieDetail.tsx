@@ -94,8 +94,9 @@ export const MovieDetail = () => {
             </div>
           </div>
           <p className={styled.sinopse}>{movie.overview}</p>
+          <ButtonHome />
         </div>
-        <ButtonHome />
+        
       </section>
     </>
   );

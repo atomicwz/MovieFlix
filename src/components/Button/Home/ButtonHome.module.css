@@ -1,7 +1,4 @@
 .buttonHome{
-    position: absolute;
-    bottom: 5rem;
-    left: 3%;
     padding: 15px;
     border: none;
     border-radius: 5px;
@@ -11,6 +8,7 @@
     transition: .3s;
     font-weight: 700;
     font-family: var(--font-family);
+    margin-top: 5rem;
 }
 .buttonHome:hover,
 .buttonHome:focus{

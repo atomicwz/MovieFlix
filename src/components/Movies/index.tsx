@@ -6,41 +6,37 @@ import { MovieFiltered } from "../MovieFiltered/MovieFiltered";
 import { MovieList } from "../MovieList/MovieList";
 import "./index.css";
 
-export interface IMovieProps{
-  poster_path: string
-  id: number
+export interface IMovieProps {
+  poster_path: string;
+  id: number;
 }
 
-export interface IFilteredMovie{
-  poster_path: string
-  id: number
-}
-
-export interface ISearch{
-  clearTimeout: number
-  id: number
+export interface IFilteredMovie {
+  poster_path: string;
+  id: number;
 }
 
 export const Movies = () => {
   const timeToSearch = 2000;
+  const refTimeout = React.useRef<any>(null);
+
   const [page, setPage] = React.useState<number>(1);
   const [movies, setMovies] = React.useState<IMovieProps[]>([]);
   const [search, setSearch] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [filteredMovies, setFilteredMovies] = React.useState<IFilteredMovie[]>([]);
-
-
-const timeout = React.useRef<any>(null)
+  const [filteredMovies, setFilteredMovies] = React.useState<IFilteredMovie[]>(
+    []
+  );
 
   React.useEffect(() => {
     const fetch = async () => {
-      setLoading(false)
+      setLoading(false);
       const data = await getMovies(page);
       setMovies(data);
     };
     fetch();
   }, [page]);
-  
+
   function nextPage() {
     if (page === 6) return;
     setPage(page + 1);
@@ -50,36 +46,38 @@ const timeout = React.useRef<any>(null)
     setPage(page - 1);
   }
 
-  
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const eventValue = event.currentTarget.value;
-    setLoading(true)
+    setLoading(true);
     setSearch(eventValue);
 
-    window.clearTimeout(timeout.current)
+    window.clearTimeout(refTimeout.current);
 
-    timeout.current = setTimeout(() => {
+    refTimeout.current = setTimeout(() => {
       if (eventValue === "") return setLoading(false);
       filterMovies(eventValue);
-    }, timeToSearch)
+    }, timeToSearch);
   }
 
   async function filterMovies(search: string) {
     const filtereds = await getMoviesSearcheds(search);
     setFilteredMovies(filtereds.results);
-    setLoading(false)
+    setLoading(false);
   }
-
 
   return (
     <section className="container-section">
-      <Header loading={loading} filter={handleChange}/>
-      { search ? (
+      <Header loading={loading} filter={handleChange} />
+      {search ? (
         <MovieFiltered filteredMovies={filteredMovies} />
       ) : (
         <>
           <MovieList movies={movies} />
-          <ButtonPagination  next={nextPage} previous={previousrPage} page={page}/>
+          <ButtonPagination
+            next={nextPage}
+            previous={previousrPage}
+            page={page}
+          />
         </>
       )}
     </section>

@@ -3,15 +3,14 @@
   background-size: cover;
   background-position: center center;
   color: white;
-  overflow: hidden;
   cursor: default;
+  overflow-x: hidden;
 }
 .sectionDetail h1 {
   font-size: 4rem;
   cursor: pointer;
 }
 .description {
-  overflow: hidden;
   max-width: 35%;
   padding: 50px;
   height: inherit;
@@ -50,7 +49,6 @@ p {
   padding: 0;
 }
 .description div {
-  overflow: hidden;
   font-weight: 400;
   display: flex;
   gap: 0.5rem;
