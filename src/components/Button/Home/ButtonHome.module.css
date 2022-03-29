@@ -8,16 +8,10 @@
     transition: .3s;
     font-weight: 700;
     font-family: var(--font-family);
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 .buttonHome:hover,
 .buttonHome:focus{
     background: rgba(54, 54, 54, 0.63);
     border: 1px solid white;
-}
-    
-@media (max-width:600px){
-    .buttonHome{
-        bottom: 4rem;
-    }
 }
