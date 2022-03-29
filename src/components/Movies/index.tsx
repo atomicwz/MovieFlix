@@ -16,6 +16,11 @@ export interface IFilteredMovie{
   id: number
 }
 
+export interface ISearch{
+  clearTimeout: number
+  id: number
+}
+
 export const Movies = () => {
   const timeToSearch = 2000;
   const [page, setPage] = React.useState<number>(1);
@@ -23,6 +28,9 @@ export const Movies = () => {
   const [search, setSearch] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
   const [filteredMovies, setFilteredMovies] = React.useState<IFilteredMovie[]>([]);
+
+
+const timeout = React.useRef<any>(null)
 
   React.useEffect(() => {
     const fetch = async () => {
@@ -42,15 +50,18 @@ export const Movies = () => {
     setPage(page - 1);
   }
 
+  
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const eventValue = event.currentTarget.value;
     setLoading(true)
     setSearch(eventValue);
 
-    setTimeout(() => {
+    window.clearTimeout(timeout.current)
+
+    timeout.current = setTimeout(() => {
       if (eventValue === "") return setLoading(false);
       filterMovies(eventValue);
-    }, timeToSearch);
+    }, timeToSearch)
   }
 
   async function filterMovies(search: string) {
@@ -58,7 +69,8 @@ export const Movies = () => {
     setFilteredMovies(filtereds.results);
     setLoading(false)
   }
-  
+
+
   return (
     <section className="container-section">
       <Header loading={loading} filter={handleChange}/>
