@@ -8,7 +8,7 @@
     transition: .3s;
     font-weight: 700;
     font-family: var(--font-family);
-    margin-top: 2rem;
+    margin-top: 5rem;
 }
 .buttonHome:hover,
 .buttonHome:focus{
