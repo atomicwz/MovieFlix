@@ -7,7 +7,6 @@ interface IMovieList{
   movies: IMovieProps[]
 }
 
-
 export const MovieList = (props: IMovieList) => {
   return (
     <div className="lista">
@@ -16,9 +15,11 @@ export const MovieList = (props: IMovieList) => {
           return (
             <Link key={movie.id} to={`/movie/${movie.id}`}>
               <li>
+
                 <img
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                 />
+                
               </li>
             </Link>
           );

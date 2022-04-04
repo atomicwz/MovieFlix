@@ -18,27 +18,27 @@ export interface IFilteredMovie {
 
 export const Movies = () => {
   const timeToSearch = 2000;
-  const refTimeout = React.useRef<any>(null);
+  const pageLimit = 6
+  const refTimeout = React.useRef<any>();
 
   const [page, setPage] = React.useState<number>(1);
   const [movies, setMovies] = React.useState<IMovieProps[]>([]);
   const [search, setSearch] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [filteredMovies, setFilteredMovies] = React.useState<IFilteredMovie[]>(
-    []
-  );
+  const [filteredMovies, setFilteredMovies] = React.useState<IFilteredMovie[]>([]);
+
 
   React.useEffect(() => {
     const fetch = async () => {
-      setLoading(false);
       const data = await getMovies(page);
       setMovies(data);
     };
     fetch();
   }, [page]);
 
+  
   function nextPage() {
-    if (page === 6) return;
+    if (page === pageLimit) return;
     setPage(page + 1);
   }
   function previousrPage() {
@@ -46,17 +46,17 @@ export const Movies = () => {
     setPage(page - 1);
   }
 
+
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const eventValue = event.currentTarget.value;
+    const eventValue = event.target.value;
     setLoading(true);
     setSearch(eventValue);
-
     window.clearTimeout(refTimeout.current);
-
     refTimeout.current = setTimeout(() => {
       if (eventValue === "") return setLoading(false);
       filterMovies(eventValue);
     }, timeToSearch);
+    
   }
 
   async function filterMovies(search: string) {

@@ -39,7 +39,7 @@ export const MovieDetail = () => {
 
   useEffect(() => {
     async function renderMovie() {
-      const response = await getMovieDetails(id!);
+      const response = await getMovieDetails(id);
       setMovie(response);
     }
     renderMovie();
@@ -67,12 +67,7 @@ export const MovieDetail = () => {
             <ul className={styled.genres}>
               {movie.genres
                 ? movie.genres.map((item: IGenre) => {
-                    return (
-
-                      <li key={item.id}>
-                        {item.name}
-                      </li>
-                    );
+                    return <li key={item.id}>{item.name}</li>;
                   })
                 : "Gênero não encontrado."}
             </ul>
@@ -96,7 +91,6 @@ export const MovieDetail = () => {
           <p className={styled.sinopse}>{movie.overview}</p>
           <ButtonHome />
         </div>
-        
       </section>
     </>
   );

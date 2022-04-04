@@ -7,6 +7,7 @@ interface IHeader{
   loading: boolean
   filter: React.ChangeEventHandler<HTMLInputElement>
 }
+
 export const Header = (props: IHeader) => {
   return (
     <header>
