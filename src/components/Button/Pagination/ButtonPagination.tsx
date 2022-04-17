@@ -12,7 +12,7 @@ export const ButtonPagination = (props: IButtonPagination) => {
   return (
     <div className={styled.buttonDiv}>
       <button onClick={props.previous} >{'<'}</button>
-      <button className="page">{props.page}</button>
+      <button className="page">{props.page + 1}</button>
       <button onClick={props.next} >{'>'}</button>
     </div>
   );

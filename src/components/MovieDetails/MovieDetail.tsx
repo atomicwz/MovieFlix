@@ -6,16 +6,18 @@ import styled from "./MovieDetail.module.css";
 import { ReactComponent as Star } from "../../Assets/Star.svg";
 import { ReactComponent as Clock } from "../../Assets/clock.svg";
 import { ReactComponent as Calendar } from "../../Assets/calendar.svg";
+import { observer, useLocalObservable } from "mobx-react-lite";
+import Store from "./detailStore";
 
-interface IMovieDetail {
+export interface IMovieDetail {
   title: string;
   overview: string;
   poster_path: string;
   backdrop_path: string;
-  runtime: number;
+  runtime: number | null;
   genres: Array<IGenre>;
   vote_average: number;
-  release_date: string;
+  release_date: string | null;
 }
 
 interface IGenre {
@@ -23,75 +25,55 @@ interface IGenre {
   id: number;
 }
 
-export const MovieDetail = () => {
-  const [movie, setMovie] = useState<IMovieDetail>({
-    title: "",
-    overview: "",
-    poster_path: "",
-    backdrop_path: "",
-    runtime: 0,
-    genres: [],
-    vote_average: 0,
-    release_date: "",
-  });
+export const MovieDetail = observer(() => {
 
   const { id } = useParams();
-
-  useEffect(() => {
-    async function renderMovie() {
-      const response = await getMovieDetails(id);
-      setMovie(response);
-    }
-    renderMovie();
-  }, []);
+  const store = useLocalObservable(() => new Store(id));
 
   return (
     <>
-      <section
-        className={styled.sectionDetail}
-        style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
-        }}
-      >
-        <div className={styled.description}>
-          {movie.poster_path && (
-            <img
-              className={styled.poster}
-              src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-              alt="Filme"
-            />
-          )}
+      {store.details.model.value ? (
+        <section
+          className={styled.sectionDetail}
+          style={{
+            backgroundImage: `url(https://image.tmdb.org/t/p/original${store.details.fetchedModel.backdrop_path})`,
+          }}
+        >
+          <div className={styled.description}>
+            <h1>{store.details.fetchedModel.title}</h1>
+            <div>
+              <ul className={styled.genres}>
+                {store.details.fetchedModel.genres.map((item: IGenre) => {
+                  return <li key={item.id}>{item.name}</li>;
+                })}
+              </ul>
+            </div>
+            <div className={styled.containerDescript}>
+              <div className={styled.divIcons}>
+                <Star className={styled.icons} />
+                <p className={styled.votes}>
+                  {store.details.fetchedModel.vote_average}
+                </p>{" "}
+              </div>
 
-          <h1>{movie.title}</h1>
-          <div>
-            <ul className={styled.genres}>
-              {movie.genres
-                ? movie.genres.map((item: IGenre) => {
-                    return <li key={item.id}>{item.name}</li>;
-                  })
-                : "Gênero não encontrado."}
-            </ul>
+              <div className={styled.divIcons}>
+                <Clock className={styled.icons} />
+                <p>{store.details.fetchedModel.runtime} Min</p>
+              </div>
+
+              <div className={styled.divIcons}>
+                <Calendar className={styled.icons} />
+                <p>{store.details.fetchedModel.release_date}</p>
+              </div>
+            </div>
+            <p className={styled.sinopse}>{store.details.fetchedModel.overview}</p>
+            <ButtonHome />
           </div>
-          <div className={styled.containerDescript}>
-            <div className={styled.divIcons}>
-              <Star className={styled.icons} />
-              <p className={styled.votes}>{movie.vote_average}</p>{" "}
-            </div>
+        </section>
+      ) : (
+        "bunda"
+      )}
 
-            <div className={styled.divIcons}>
-              <Clock className={styled.icons} />
-              <p>{movie.runtime} Min</p>
-            </div>
-
-            <div className={styled.divIcons}>
-              <Calendar className={styled.icons} />
-              <p>{movie.release_date}</p>
-            </div>
-          </div>
-          <p className={styled.sinopse}>{movie.overview}</p>
-          <ButtonHome />
-        </div>
-      </section>
     </>
   );
-};
+});

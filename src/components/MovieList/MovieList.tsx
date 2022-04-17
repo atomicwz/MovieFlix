@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { IMovieProps } from "../Movies/index";
 import styled from "./MovieList.module.css";
 
-interface IMovieList{
-  movies: IMovieProps[]
+interface IMovieList {
+  movies: IMovieProps[];
 }
 
 export const MovieList = (props: IMovieList) => {
@@ -15,11 +15,10 @@ export const MovieList = (props: IMovieList) => {
           return (
             <Link key={movie.id} to={`/movie/${movie.id}`}>
               <li>
-
                 <img
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                  alt={movie.title}
                 />
-                
               </li>
             </Link>
           );

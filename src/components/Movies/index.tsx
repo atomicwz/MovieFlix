@@ -1,14 +1,17 @@
+import { observer, useLocalObservable } from "mobx-react-lite";
 import * as React from "react";
-import { getMovies, getMoviesSearcheds } from "../../services/api";
+import { getMoviesSearcheds } from "../../services/api";
 import { ButtonPagination } from "../Button/Pagination/ButtonPagination";
 import { Header } from "../Header/Header";
 import { MovieFiltered } from "../MovieFiltered/MovieFiltered";
 import { MovieList } from "../MovieList/MovieList";
 import "./index.css";
+import Store from "./store";
 
 export interface IMovieProps {
   poster_path: string;
   id: number;
+  title: string;
 }
 
 export interface IFilteredMovie {
@@ -16,70 +19,52 @@ export interface IFilteredMovie {
   id: number;
 }
 
-export const Movies = () => {
+export const Movies = observer(() => {
+  const store = useLocalObservable(() => new Store());
   const timeToSearch = 2000;
-  const pageLimit = 6
-  const refTimeout = React.useRef<any>();
-
-  const [page, setPage] = React.useState<number>(1);
-  const [movies, setMovies] = React.useState<IMovieProps[]>([]);
+  const refTimeout = React.useRef<NodeJS.Timeout>();
   const [search, setSearch] = React.useState<string>("");
-  const [loading, setLoading] = React.useState<boolean>(false);
-  const [filteredMovies, setFilteredMovies] = React.useState<IFilteredMovie[]>([]);
-
-
-  React.useEffect(() => {
-    const fetch = async () => {
-      const data = await getMovies(page);
-      setMovies(data);
-    };
-    fetch();
-  }, [page]);
-
-  
+  const [filteredMovies, setFilteredMovies] = React.useState<IFilteredMovie[]>(
+    []
+  );
   function nextPage() {
-    if (page === pageLimit) return;
-    setPage(page + 1);
+    store.listShelf.nextPage();
   }
   function previousrPage() {
-    if (page === 1) return;
-    setPage(page - 1);
+    store.listShelf.previousPage();
   }
-
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const eventValue = event.target.value;
-    setLoading(true);
     setSearch(eventValue);
     window.clearTimeout(refTimeout.current);
     refTimeout.current = setTimeout(() => {
-      if (eventValue === "") return setLoading(false);
       filterMovies(eventValue);
     }, timeToSearch);
-    
   }
-
   async function filterMovies(search: string) {
     const filtereds = await getMoviesSearcheds(search);
     setFilteredMovies(filtereds.results);
-    setLoading(false);
   }
 
   return (
     <section className="container-section">
-      <Header loading={loading} filter={handleChange} />
+      <Header
+        loading={store.listShelf.loader.isLoading}
+        filter={handleChange}
+      />
       {search ? (
-        <MovieFiltered filteredMovies={filteredMovies} />
+        <MovieFiltered results={search} filteredMovies={filteredMovies} />
       ) : (
         <>
-          <MovieList movies={movies} />
+          <MovieList movies={store.listShelf.items} />
           <ButtonPagination
+            page={store.listShelf.page}
             next={nextPage}
             previous={previousrPage}
-            page={page}
           />
         </>
       )}
     </section>
   );
-};
+});

@@ -4,8 +4,8 @@ import { Loading } from "../Loading/Loading";
 import "./Header.module.css";
 
 interface IHeader{
-  loading: boolean
   filter: React.ChangeEventHandler<HTMLInputElement>
+  loading: boolean
 }
 
 export const Header = (props: IHeader) => {
