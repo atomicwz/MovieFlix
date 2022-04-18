@@ -24,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "code-check": "eslint ./src && npm run tsc",
+    "tsc": "tsc -noEmit"
   },
   "eslintConfig": {
     "extends": [
@@ -43,5 +45,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslintrc": "^1.0.6"
+  },
+  "resolutions": {
+    "coa": "2.0.2"
+}
+
 }

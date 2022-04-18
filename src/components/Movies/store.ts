@@ -1,16 +1,24 @@
-import { PaginatedListShelf } from "@startapp/mobx-utils";
-import {  makeAutoObservable} from "mobx";
+import { AttributeShelf, PaginatedListShelf } from "@startapp/mobx-utils";
+import { makeAutoObservable } from "mobx";
 import { IMovieProps } from ".";
-import { getMovies } from "../../services/api";
-
+import { getMovies, getMoviesSearcheds } from "../../services/api";
 
 export default class Store {
-  public page: number;
-  public listShelf: PaginatedListShelf<IMovieProps>;
+	public listShelf: PaginatedListShelf<IMovieProps>;
+	public search: AttributeShelf<string>;
 
-  constructor() {
-    makeAutoObservable(this);
-    this.listShelf = new PaginatedListShelf((page) => getMovies(page + 1),{ fetchOnConstructor: true });
-  }
-  
+	constructor() {
+		makeAutoObservable(this);
+
+		this.search = new AttributeShelf("");
+		this.listShelf = new PaginatedListShelf((page) =>{
+			if (this.search.value){
+				return getMoviesSearcheds(this.search.value);
+			} return getMovies(page + 1);
+		},
+		{
+			fetchOnConstructor: true,
+		},
+		);
+	}
 }

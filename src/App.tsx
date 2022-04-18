@@ -1,10 +1,9 @@
 import * as React from "react";
 import { AppRoutes } from "./pages/routes";
-import './App.css'
-function App() {
-  return (
-    <AppRoutes/>
-  );
-}
+import "./App.css";
+
+const App = ()=>(
+	<AppRoutes />
+);
 
 export default App;

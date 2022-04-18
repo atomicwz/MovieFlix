@@ -1,7 +1,5 @@
-import React from 'react'
-import { Movies } from '../../components/Movies'
+import React from "react";
+import { Movies } from "../../components/Movies";
 
 
-export const Home = () => {
-  return <Movies/>
-}
+export const Home = () => <Movies />;
