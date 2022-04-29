@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Input } from "../Input/Input";
 import { Loading } from "../Loading/Loading";
-import "./Header.module.css";
+import { Flex, Input, Text } from "@chakra-ui/react";
+import { BsSearch } from "react-icons/bs";
 
 interface IHeader {
 	filter: React.ChangeEventHandler<HTMLInputElement>;
@@ -10,13 +10,43 @@ interface IHeader {
 }
 
 export const Header: React.FC<IHeader> =(props) => (
-	<header>
+	<Flex
+		width="80%"
+		justifyContent="space-between"
+		direction="row"
+		alignItems="center"
+		mx="auto"
+		position="relative"
+	>
+		<Text
+			color="black"
+			fontSize="3xl"
+			cursor="default"
+		>
+			IDEUM
+		</Text>
 		{props.loading && <Loading />}
-		<div>
-			<h1>MovieFlix</h1>
-		</div>
-		<Input onChange={props.filter} />
-	</header>
+		<Flex
+			gap={2}
+			alignItems="center"
+			color="white"
+		>
+			<Input
+				textAlign="right"
+				placeholder="FILTER"
+				border="none"
+				bg="black"
+				ml={{
+					base: "10px",
+					sm: "20px",
+				}}
+				_placeholder={{color: "white"}}
+				_focus={{outline: "none"}}
+				onChange={props.filter}
+			/>
+			<BsSearch color="black" size={35} />
+		</Flex>
+	</Flex>
 );
 
 export default observer(Header);

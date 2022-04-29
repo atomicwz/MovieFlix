@@ -1,0 +1,12 @@
+.slide-container{
+    max-width: 100%;
+    background-color: black;
+    color: white;   
+}
+.slide{
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: flex-end;
+    z-index: 0;
+}

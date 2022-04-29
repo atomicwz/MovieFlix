@@ -1,20 +1,31 @@
-import { AttributeShelf, PaginatedListShelf } from "@startapp/mobx-utils";
+import { AttributeShelf, InfinityScrollShelf, PaginatedListShelf } from "@startapp/mobx-utils";
 import { makeAutoObservable } from "mobx";
-import { IMovieProps } from ".";
-import { getMovies, getMoviesSearcheds } from "../../services/api";
+import { IListShelf, IMovieProps } from ".";
+import { getMovies, getMoviesSearcheds, getMovieTopRated } from "../../services/api";
 
 export default class Store {
-	public listShelf: PaginatedListShelf<IMovieProps>;
+	public listShelf: InfinityScrollShelf<IListShelf>;
+	public movies: PaginatedListShelf<IMovieProps>;
 	public search: AttributeShelf<string>;
+	public urlImage: AttributeShelf<string>;
+	public favorites: AttributeShelf<number[]>;
 
 	constructor() {
 		makeAutoObservable(this);
-
 		this.search = new AttributeShelf("");
-		this.listShelf = new PaginatedListShelf((page) =>{
+		this.urlImage = new AttributeShelf("");
+		this.movies = new PaginatedListShelf(()=> getMovieTopRated(),{fetchOnConstructor: true});
+		this.listShelf = new InfinityScrollShelf(async (page) => {
+			let moviesList: IMovieProps[] = [];
 			if (this.search.value){
-				return getMoviesSearcheds(this.search.value);
-			} return getMovies(page + 1);
+				moviesList = await getMoviesSearcheds(this.search.value);
+			} else {
+				moviesList = await getMovies(page + 1);
+			}
+			return moviesList.map((movie)=> ({
+				...movie,
+				favorite: false,
+			}));
 		},
 		{
 			fetchOnConstructor: true,

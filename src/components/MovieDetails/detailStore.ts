@@ -4,7 +4,7 @@ import { getMovieDetails} from "../../services/api";
 import { IMovieDetail } from "./MovieDetail";
 
 
-export default class Store {
+export default class StoreDetail {
 
 	public details: FetchModelShelf<IMovieDetail>;
 
