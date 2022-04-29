@@ -19,10 +19,6 @@ export interface IMovieProps {
 	favorite: boolean;
 }
 
-export interface IFilteredMovie {
-	poster_path: string;
-	id: number;
-}
 export const Movies = () => {
 	const store = useLocalObservable(() => new Store());
 	const timeToSearch = 2000;
@@ -41,15 +37,15 @@ export const Movies = () => {
 	return (
 		<Flex
 			flexDirection='column'
-			bg={colors ? colors[0] : "#fff"}
 		>
 			<Header
+				color={colors ? colors[0] : "rgba(0,0,0,.3)"}
 				loading={store.listShelf.loader.isLoading}
 				filter={handleChange}
 			/>
 			{!store.search.value && <Banner url={store.urlImage} movies={store.movies} /> }
 
-			<MovieList nextPage={store.listShelf} movies={store.listShelf.listItems}  />
+			<MovieList handleClick={store.handleClick} nextPage={store.listShelf} movies={store.listShelf.listItems}  />
 
 		</Flex>
 	);

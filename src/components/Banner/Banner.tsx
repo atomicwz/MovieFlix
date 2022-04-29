@@ -36,27 +36,26 @@ export const Banner: React.FC<IBanner> = observer((props: IBanner) =>{
 					onChange={(e)=> handleChange(e)}
 				>
 					{props.movies.items.map((movie: IMovieProps)=>(
-						<>
-							<Box
-								key={movie.id}
-								w="100%"
-								h="70vh"
-								bg={`url(https://image.tmdb.org/t/p/original${movie.backdrop_path}) no-repeat center`}
-								bgSize="cover"
-							>
-								<Link to={`/movie/${movie.id}`}>
-									<Box bg="rgba(0,0,0,.3)">
-										<Text
-											fontSize="5xl"
-											fontWeight="600"
-											color="white"
-										>
-											{movie.title}
-										</Text>
-									</Box>
-								</Link>
-							</Box>
-						</>
+
+						<Box
+							key={movie.id}
+							w="100%"
+							h="70vh"
+							bg={`url(https://image.tmdb.org/t/p/original${movie.backdrop_path}) no-repeat center`}
+							bgSize="cover"
+						>
+							<Link to={`/movie/${movie.id}`}>
+								<Box bg="rgba(0,0,0,.3)">
+									<Text
+										fontSize="5xl"
+										fontWeight="600"
+										color="white"
+									>
+										{movie.title}
+									</Text>
+								</Box>
+							</Link>
+						</Box>
 					))}
 				</Carousel > }
 

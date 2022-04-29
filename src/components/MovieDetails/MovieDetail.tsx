@@ -43,13 +43,13 @@ export const MovieDetail = () => {
 					h="100vh"
 					position="relative"
 				>
-					<Box bg="rgba(0,0,0,.8)">
+					<Box bg={colors ? colors[0] : "transparent"}>
 						<Flex
 							alignItems="center"
 							mx="auto"
 							justifyContent="space-between"
-							maxW="90%"
-							padding={5}
+							maxW="80%"
+							padding={3}
 						>
 							<Text
 								color="white"
