@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Flex } from "@chakra-ui/react";
 import { observer, useLocalObservable } from "mobx-react-lite";
 import * as React from "react";
@@ -7,7 +6,6 @@ import { Header } from "../Header/Header";
 import { MovieList } from "../MovieList/MovieList";
 import Store from "./store";
 import UseImageColor from "use-image-color";
-// import UseImageColor from "use-image-color";
 export interface IListShelf extends IMovieProps{
 	favorite: boolean;
 }

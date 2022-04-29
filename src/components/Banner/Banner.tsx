@@ -1,6 +1,3 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable react/jsx-max-props-per-line */
-/* eslint-disable max-len */
 /* eslint-disable react/react-in-jsx-scope */
 import "./style.css";
 import { Box, Text } from "@chakra-ui/react";
@@ -44,10 +41,8 @@ export const Banner: React.FC<IBanner> = observer((props: IBanner) =>{
 								key={movie.id}
 								w="100%"
 								h="70vh"
-								bg={`url(https://image.tmdb.org/t/p/original${movie.backdrop_path}) no-repeat`}
-								bgRepeat="no-repeat"
+								bg={`url(https://image.tmdb.org/t/p/original${movie.backdrop_path}) no-repeat center`}
 								bgSize="cover"
-								bgPosition="center"
 							>
 								<Link to={`/movie/${movie.id}`}>
 									<Box bg="rgba(0,0,0,.3)">
