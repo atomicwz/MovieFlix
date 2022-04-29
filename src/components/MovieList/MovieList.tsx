@@ -89,9 +89,7 @@ export const MovieList: React.FC<IMovieList> = (props) =>{
 					loadingText='Carregando'
 					colorScheme='teal'
 					variant='outline'
-				>
-					Submit
-				</Button>
+				/>
 			</Flex>
 		</>
 	);

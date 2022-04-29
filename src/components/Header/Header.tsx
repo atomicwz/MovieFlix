@@ -1,6 +1,5 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Loading } from "../Loading/Loading";
 import { Flex, Input, Text } from "@chakra-ui/react";
 import { BsSearch } from "react-icons/bs";
 
@@ -25,7 +24,6 @@ export const Header: React.FC<IHeader> =(props) => (
 		>
 			IDEUM
 		</Text>
-		{props.loading && <Loading />}
 		<Flex
 			gap={2}
 			alignItems="center"
