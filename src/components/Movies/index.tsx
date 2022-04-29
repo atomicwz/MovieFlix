@@ -44,9 +44,7 @@ export const Movies = () => {
 				filter={handleChange}
 			/>
 			{!store.search.value && <Banner url={store.urlImage} movies={store.movies} /> }
-
 			<MovieList handleClick={store.handleClick} nextPage={store.listShelf} movies={store.listShelf.listItems}  />
-
 		</Flex>
 	);
 };

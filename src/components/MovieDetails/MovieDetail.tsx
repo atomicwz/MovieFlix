@@ -5,6 +5,7 @@ import StoreDetail from "./detailStore";
 import { Box, Button, Flex, Input, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import {BsPlay, BsSearch } from "react-icons/bs";
 import UseImageColor from "use-image-color";
+
 export interface IMovieDetail {
 	title: string;
 	overview: string;

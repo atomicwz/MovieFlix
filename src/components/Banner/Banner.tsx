@@ -13,7 +13,6 @@ interface IBanner{
 	url: AttributeShelf<string>;
 }
 
-
 export const Banner: React.FC<IBanner> = observer((props: IBanner) =>{
 	const handleChange = (e)=>{
 		const activeSlide = props.movies.items[e].backdrop_path;
@@ -57,7 +56,7 @@ export const Banner: React.FC<IBanner> = observer((props: IBanner) =>{
 							</Link>
 						</Box>
 					))}
-				</Carousel > }
+				</Carousel >}
 
 		</>
 	);
